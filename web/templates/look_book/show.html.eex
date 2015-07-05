@@ -1,0 +1,17 @@
+<h2>Show look_book</h2>
+
+<ul>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @look_book.name %>
+  </li>
+
+  <li>
+    <strong>Source url:</strong>
+    <%= @look_book.source_url %>
+  </li>
+
+</ul>
+
+<%= link "Back", to: look_book_path(@conn, :index) %>

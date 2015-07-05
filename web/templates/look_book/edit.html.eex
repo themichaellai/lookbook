@@ -1,0 +1,6 @@
+<h2>Edit look_book</h2>
+
+<%= render "form.html", changeset: @changeset,
+                        action: look_book_path(@conn, :update, @look_book) %>
+
+<%= link "Back", to: look_book_path(@conn, :index) %>
