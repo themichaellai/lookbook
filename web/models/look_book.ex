@@ -5,11 +5,13 @@ defmodule Lookbook.LookBook do
     field :name, :string
     field :source_url, :string
 
+    has_many :looks, Lookbook.Look
+
     timestamps
   end
 
-  @required_fields ~w(name source_url)
-  @optional_fields ~w()
+  @required_fields ~w(name)
+  @optional_fields ~w(source_url)
 
   @doc """
   Creates a changeset based on the `model` and `params`.

@@ -4,14 +4,15 @@ defmodule Lookbook.Look do
   schema "looks" do
     field :name, :string
     field :source_url, :string
+    field :path, :string
     field :lookbook_id, :integer
     field :description, :string
 
     timestamps
   end
 
-  @required_fields ~w(name source_url lookbook_id description)
-  @optional_fields ~w()
+  @required_fields ~w(lookbook_id path)
+  @optional_fields ~w(name description source_url)
 
   @doc """
   Creates a changeset based on the `model` and `params`.

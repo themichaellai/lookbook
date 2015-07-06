@@ -2,6 +2,7 @@ defmodule Lookbook.LookBookController do
   use Lookbook.Web, :controller
 
   alias Lookbook.LookBook
+  alias Scraper.Imgur
 
   plug :scrub_params, "look_book" when action in [:create, :update]
 
@@ -19,7 +20,16 @@ defmodule Lookbook.LookBookController do
     changeset = LookBook.changeset(%LookBook{}, look_book_params)
 
     if changeset.valid? do
-      Repo.insert!(changeset)
+      lookbook = Repo.insert!(changeset)
+      imgur_match = Regex.run(
+        ~r/imgur.com\/a\/([a-zA-Z0-9]+)/,
+        lookbook.source_url)
+      case imgur_match do
+        [_, album_id] ->
+          Imgur.get_album(album_id)["data"]["images"]
+          |> save_looks lookbook
+        _ -> nil
+      end
 
       conn
       |> put_flash(:info, "LookBook created successfully.")
@@ -62,5 +72,18 @@ defmodule Lookbook.LookBookController do
     conn
     |> put_flash(:info, "LookBook deleted successfully.")
     |> redirect(to: look_book_path(conn, :index))
+  end
+
+  defp save_looks(look_list, lookbook) do
+    Enum.each look_list, fn(look_data) ->
+      %Lookbook.Look{
+        name: look_data["title"],
+        description: look_data["description"],
+        path: look_data["link"],
+        source_url: look_data["link"],
+        lookbook_id: lookbook.id
+      }
+      |> Repo.insert
+    end
   end
 end

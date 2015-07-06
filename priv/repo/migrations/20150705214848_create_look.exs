@@ -5,6 +5,7 @@ defmodule Lookbook.Repo.Migrations.CreateLook do
     create table(:looks) do
       add :name, :string
       add :source_url, :string
+      add :path, :string
       add :lookbook_id, :integer
       add :description, :string
 
