@@ -20,7 +20,9 @@ defmodule Lookbook.Router do
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", Lookbook do
-  #   pipe_through :api
-  # end
+  scope "/api", Lookbook do
+    pipe_through :api
+
+    resources "/lookbooks", LookBookApiController
+  end
 end

@@ -5,13 +5,14 @@ defmodule Lookbook.Look do
     field :name, :string
     field :source_url, :string
     field :path, :string
-    field :lookbook_id, :integer
     field :description, :string
+
+    belongs_to :look_book, Lookbook.LookBook
 
     timestamps
   end
 
-  @required_fields ~w(lookbook_id path)
+  @required_fields ~w(look_book_id path)
   @optional_fields ~w(name description source_url)
 
   @doc """

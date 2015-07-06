@@ -81,9 +81,9 @@ defmodule Lookbook.LookBookController do
         description: look_data["description"],
         path: look_data["link"],
         source_url: look_data["link"],
-        lookbook_id: lookbook.id
+        look_book_id: lookbook.id
       }
-      |> Repo.insert
+      |> Repo.insert!
     end
   end
 end

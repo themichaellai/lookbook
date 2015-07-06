@@ -6,7 +6,7 @@ defmodule Lookbook.Repo.Migrations.CreateLook do
       add :name, :string
       add :source_url, :string
       add :path, :string
-      add :lookbook_id, :integer
+      add :look_book_id, :integer
       add :description, :string
 
       timestamps
