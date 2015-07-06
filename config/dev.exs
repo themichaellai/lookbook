@@ -33,3 +33,7 @@ config :lookbook, Lookbook.Repo,
   password: "postgres",
   database: "lookbook_dev",
   size: 10 # The amount of database connections in the pool
+
+# Finally import the config/dev.secret.exs
+# which should be versioned separately.
+import_config "dev.secret.exs"
