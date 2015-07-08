@@ -22,6 +22,6 @@ defmodule Lookbook.Router do
   scope "/api", Lookbook do
     pipe_through :api
 
-    resources "/lookbooks", LookBookApiController
+    resources "/lookbooks", LookBookController
   end
 end
