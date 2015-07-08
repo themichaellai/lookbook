@@ -16,7 +16,6 @@ defmodule Lookbook.Router do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index
-    resources "/lookbooks", LookBookController
   end
 
   # Other scopes may use custom stacks.
