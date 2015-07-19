@@ -17,15 +17,15 @@ defmodule Lookbook.LookBookController do
     if changeset.valid? do
       look_book = Repo.insert!(changeset)
 
-      imgur_match = Regex.run(
-        ~r/imgur.com\/a\/([a-zA-Z0-9]+)/,
-        look_book.source_url)
-      case imgur_match do
-        [_, album_id] ->
-          Imgur.get_album(album_id)["data"]["images"]
-          |> save_looks look_book
-        _ -> nil
-      end
+      #imgur_match = Regex.run(
+      #  ~r/imgur.com\/a\/([a-zA-Z0-9]+)/,
+      #  look_book.source_url)
+      #case imgur_match do
+      #  [_, album_id] ->
+      #    Imgur.get_album(album_id)["data"]["images"]
+      #    |> save_looks look_book
+      #  _ -> nil
+      #end
 
       render(conn, "show.json", look_book: look_book)
     else

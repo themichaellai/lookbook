@@ -6,4 +6,8 @@ defmodule Lookbook.ChangesetView do
     # as a JSON object. So we just pass it forward.
     %{errors: changeset}
   end
+
+  def render("error.json", %{message: message}) do
+    %{errors: message}
+  end
 end
