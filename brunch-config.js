@@ -40,7 +40,7 @@ exports.config = {
     watched: ["web/static", "test/static"],
 
     // Where to compile files to
-    public: "priv/static"
+    public: "priv/static/brunch"
   },
 
   // Configure your plugins
